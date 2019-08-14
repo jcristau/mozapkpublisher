@@ -50,8 +50,8 @@ def push_apk(
 
     if track == 'rollout' and rollout_percentage is None:
         raise WrongArgumentGiven("When using track='rollout', rollout percentage must be provided too")
-    if rollout_percentage is not None and track != 'rollout':
-        raise WrongArgumentGiven("When using rollout-percentage, track must be set to rollout")
+    if rollout_percentage is not None and track == 'rollout':
+        track = 'production'
 
     apks_metadata_per_paths = extract_and_check_apks_metadata(
         apks,
